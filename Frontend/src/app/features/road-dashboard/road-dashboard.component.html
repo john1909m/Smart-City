@@ -1,0 +1,10 @@
+<section class="dashboard-page page">
+  <header class="page-header">
+    <div>
+      <h1 class="page-title">Road Dashboard</h1>
+      <p class="page-subtitle">Road environmental sensor intelligence and traffic conditions.</p>
+    </div>
+    <span class="status-pill status-success">Stable Conditions</span>
+  </header>
+  <app-reading-chart [readings]="(readings$ | async) ?? []" title="Road Environmental Trends"></app-reading-chart>
+</section>

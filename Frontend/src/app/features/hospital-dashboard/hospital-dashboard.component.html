@@ -1,0 +1,23 @@
+<section class="dashboard-page page">
+  <header class="page-header">
+    <div>
+      <h1 class="page-title">Hospital Dashboard</h1>
+      <p class="page-subtitle">Heartbeat monitoring and patient alert visibility.</p>
+    </div>
+    <span class="status-pill status-warning">High Attention</span>
+  </header>
+
+  <app-reading-chart [readings]="(readings$ | async) ?? []" title="Heartbeat Trends"></app-reading-chart>
+
+  <mat-card class="glass-card alert-card">
+    <mat-card-title>Patient Status Alerts</mat-card-title>
+    <mat-list class="alert-list">
+      <mat-list-item *ngFor="let item of (readings$ | async) ?? []" class="alert-row">
+        <span class="status-pill" [ngClass]="item.value > 110 ? 'status-danger' : 'status-success'">
+          {{ item.value > 110 ? 'Critical' : 'Normal' }}
+        </span>
+        Sensor {{ item.sensorId }}: {{ item.value }} at {{ item.timestamp | date: 'shortTime' }}
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+</section>

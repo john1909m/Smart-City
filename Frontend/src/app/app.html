@@ -1,0 +1,33 @@
+<div class="shell">
+  <mat-toolbar class="toolbar">
+    <div class="brand">
+      <span class="brand-dot"></span>
+      <div>
+        <div class="app-title">Smart City IoT</div>
+        <div class="app-subtitle">Realtime Monitoring Platform</div>
+      </div>
+    </div>
+    <span class="spacer"></span>
+    <button mat-stroked-button class="refresh-button">Live Mode</button>
+  </mat-toolbar>
+
+  <div class="layout">
+    <aside class="sidebar glass-card">
+      <div class="sidebar-title">Dashboards</div>
+      <a
+        class="nav-link"
+        *ngFor="let item of navigation"
+        [routerLink]="item.route"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: item.route === '/dashboard' }"
+      >
+        <span class="nav-dot"></span>
+        {{ item.label }}
+      </a>
+    </aside>
+
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

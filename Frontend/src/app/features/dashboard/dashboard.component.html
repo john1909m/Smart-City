@@ -1,0 +1,17 @@
+<section class="dashboard-page page">
+  <header class="page-header">
+    <div>
+      <h1 class="page-title">Smart City Overview</h1>
+      <p class="page-subtitle">Unified city telemetry, alerts, and live IoT activity.</p>
+    </div>
+    <span class="status-pill status-info">System Online</span>
+  </header>
+
+  <div class="summary-grid" *ngIf="summary$ | async as summary">
+    <app-summary-card label="Total Sensors" [value]="summary.totalSensors"></app-summary-card>
+    <app-summary-card label="Active Devices" [value]="summary.activeDevices" accent="success"></app-summary-card>
+    <app-summary-card label="Alerts" [value]="summary.alerts" accent="warn"></app-summary-card>
+  </div>
+
+  <app-reading-chart [readings]="(latestReadings$ | async) ?? []" title="Live Readings Preview"></app-reading-chart>
+</section>

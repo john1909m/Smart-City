@@ -1,0 +1,40 @@
+.page {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.control-row {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.control-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.control-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.7rem 0.25rem;
+  border-bottom: 1px dashed #e2e8f0;
+}
+
+.control-item:last-child {
+  border-bottom: 0;
+}
+
+.control-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.control-name {
+  font-weight: 600;
+  color: #334155;
+}

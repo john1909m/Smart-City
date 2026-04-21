@@ -1,0 +1,37 @@
+<section class="dashboard-page page">
+  <header class="page-header">
+    <div>
+      <h1 class="page-title">Garage Dashboard</h1>
+      <p class="page-subtitle">RFID logs, access control history, and denied entries.</p>
+    </div>
+    <span class="status-pill status-info">Access Monitoring</span>
+  </header>
+
+  <mat-card class="glass-card table-card">
+    <mat-card-title>RFID Access Logs</mat-card-title>
+    <div class="table-toolbar">
+      <div class="search-ui">Search logs...</div>
+      <span class="status-pill status-info">Live Feed</span>
+    </div>
+    <table mat-table [dataSource]="(rfidLogs$ | async) ?? []" class="full-width">
+      <ng-container matColumnDef="timestamp">
+        <th mat-header-cell *matHeaderCellDef>Time</th>
+        <td mat-cell *matCellDef="let row">{{ row.timestamp | date: 'short' }}</td>
+      </ng-container>
+      <ng-container matColumnDef="sensorId">
+        <th mat-header-cell *matHeaderCellDef>RFID Sensor</th>
+        <td mat-cell *matCellDef="let row">{{ row.sensorId }}</td>
+      </ng-container>
+      <ng-container matColumnDef="value">
+        <th mat-header-cell *matHeaderCellDef>Access Result</th>
+        <td mat-cell *matCellDef="let row">
+          <span class="status-pill" [ngClass]="row.value > 0 ? 'status-success' : 'status-danger'">
+            {{ row.value > 0 ? 'Allowed' : 'Denied' }}
+          </span>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="['timestamp', 'sensorId', 'value']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['timestamp', 'sensorId', 'value']"></tr>
+    </table>
+  </mat-card>
+</section>
