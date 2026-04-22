@@ -7,7 +7,55 @@
     <span class="status-pill status-success">Safe Zone</span>
   </header>
 
-  <app-reading-chart [readings]="(readings$ | async) ?? []" title="Home Environmental Trend"></app-reading-chart>
+  <section class="summary-cards">
+    <h2>Summary</h2>
+    <div class="cards-grid">
+      <app-summary-card
+        *ngIf="co2Latest$ | async as reading"
+        [label]="'CO2'"
+        [value]="reading.value"
+        [status]="'normal'"
+      ></app-summary-card>
+      <app-summary-card
+        *ngIf="humidityLatest$ | async as reading"
+        [label]="'Humidity'"
+        [value]="reading.value"
+        [status]="'normal'"
+      ></app-summary-card>
+      <app-summary-card
+        *ngIf="rainLatest$ | async as reading"
+        [label]="'Rain'"
+        [value]="reading.value"
+        [status]="'normal'"
+      ></app-summary-card>
+    </div>
+  </section>
+
+  <section class="environmental-sensors">
+    <h2>Environmental Sensors</h2>
+    <div class="sensor-charts">
+      <app-reading-chart
+        *ngIf="co2Readings$ | async as readings"
+        [readings]="readings"
+        [title]="'CO2 (ppm)'"
+      ></app-reading-chart>
+      <app-reading-chart
+        *ngIf="humidityReadings$ | async as readings"
+        [readings]="readings"
+        [title]="'Humidity (%)'"
+      ></app-reading-chart>
+      <app-reading-chart
+        *ngIf="rainReadings$ | async as readings"
+        [readings]="readings"
+        [title]="'Rain (mm)'"
+      ></app-reading-chart>
+    </div>
+  </section>
+
+  <app-rfid-table
+    *ngIf="rfidLogs$ | async as rfidLogs"
+    [rfidLogs]="rfidLogs"
+  ></app-rfid-table>
 
   <mat-card class="glass-card control-card">
     <mat-card-title>LED Control Panel</mat-card-title>

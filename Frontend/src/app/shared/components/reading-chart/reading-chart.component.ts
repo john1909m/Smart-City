@@ -14,12 +14,13 @@ export class ReadingChartComponent {
   @Input() readings: SensorReading[] = [];
 
   get lineChartData(): ChartConfiguration<'line'>['data'] {
+    const recentReadings = this.readings.slice(-20); // Last 20 readings
     return {
-      labels: this.readings.map((reading) => new Date(reading.timestamp).toLocaleTimeString()),
+      labels: recentReadings.map((reading) => new Date(reading.timestamp).toLocaleTimeString()),
       datasets: [
         {
           label: this.title,
-          data: this.readings.map((reading) => reading.value),
+          data: recentReadings.map((reading) => reading.value),
           borderColor: '#1976d2',
           backgroundColor: 'rgba(25, 118, 210, 0.2)',
           fill: true,

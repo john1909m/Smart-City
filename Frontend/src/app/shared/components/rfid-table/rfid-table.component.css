@@ -1,0 +1,24 @@
+.rfid-card {
+  margin: 1rem 0;
+}
+
+.rfid-table {
+  width: 100%;
+}
+
+.status-pill {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status-success {
+  background-color: #4caf50;
+  color: white;
+}
+
+.status-danger {
+  background-color: #f44336;
+  color: white;
+}

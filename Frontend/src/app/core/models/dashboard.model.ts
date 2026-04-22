@@ -1,13 +1,18 @@
 import { SensorReading } from './sensor-reading.model';
 
-export interface DashboardSummary {
-  totalSensors: number;
-  activeDevices: number;
-  alerts: number;
+export interface SensorCategory {
+  sensorId: number;
+  key: 'co2' | 'humidity' | 'rain';
+  label: string;
 }
 
-export interface DashboardData {
-  location: string;
-  summary: DashboardSummary;
-  latestReadings: SensorReading[];
+export interface SensorCategorySeries {
+  category: SensorCategory;
+  readings: SensorReading[];
+}
+
+export interface RfidEntry {
+  cardId: string;
+  status: string;
+  type: string;
 }

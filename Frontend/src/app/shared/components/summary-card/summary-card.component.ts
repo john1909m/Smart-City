@@ -11,4 +11,5 @@ export class SummaryCardComponent {
   @Input({ required: true }) label = '';
   @Input({ required: true }) value: string | number = 0;
   @Input() accent: 'primary' | 'warn' | 'success' = 'primary';
+  @Input() status: 'normal' | 'warning' | 'critical' = 'normal';
 }

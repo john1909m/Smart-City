@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { API_BASE_URL, API_ENDPOINTS } from '../constants/api-endpoints';
 import { Actuator } from '../models/actuator.model';
 import { ActuatorState } from '../models/actuator-state.model';
-import { DashboardData } from '../models/dashboard.model';
+import { RfidEntry } from '../models/dashboard.model';
 import { Location } from '../models/location.model';
 import { SensorReading } from '../models/sensor-reading.model';
 import { Sensor } from '../models/sensor.model';
@@ -22,6 +22,10 @@ export class ApiService {
 
   getReadings(sensorId: string): Observable<SensorReading[]> {
     return this.http.get<SensorReading[]>(this.buildUrl(`${API_ENDPOINTS.sensors}/${sensorId}/readings`));
+  }
+
+  getReadingsBySensorId(sensorId: number): Observable<SensorReading[]> {
+    return this.http.get<SensorReading[]>(this.buildUrl(`${API_ENDPOINTS.readings}/${sensorId}`));
   }
 
   getLatestReadings(location?: string): Observable<SensorReading[]> {
@@ -47,8 +51,8 @@ export class ApiService {
     return this.http.get<Location[]>(this.buildUrl(API_ENDPOINTS.locations));
   }
 
-  getDashboard(location: string): Observable<DashboardData> {
-    return this.http.get<DashboardData>(this.buildUrl(`${API_ENDPOINTS.dashboards}/${location}`));
+  getRfidLogs(sensorId: number): Observable<RfidEntry[]> {
+    return this.http.get<RfidEntry[]>(this.buildUrl(`${API_ENDPOINTS.rfid}/${sensorId}`));
   }
 
   private buildUrl(path: string): string {

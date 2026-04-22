@@ -17,33 +17,29 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { AppRoutingModule } from './app-routing.module';
 import { App } from './app';
 import { apiPrefixInterceptor } from './core/interceptors/api-prefix.interceptor';
-import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { GarageDashboardComponent } from './features/garage-dashboard/garage-dashboard.component';
 import { HomeDashboardComponent } from './features/home-dashboard/home-dashboard.component';
 import { HospitalDashboardComponent } from './features/hospital-dashboard/hospital-dashboard.component';
-import { RoadDashboardComponent } from './features/road-dashboard/road-dashboard.component';
 import { ReadingChartComponent } from './shared/components/reading-chart/reading-chart.component';
+import { RfidTableComponent } from './shared/components/rfid-table/rfid-table.component';
 import { SummaryCardComponent } from './shared/components/summary-card/summary-card.component';
 import { StatusLabelPipe } from './shared/pipes/status-label.pipe';
 import { ActuatorsEffects } from './store/effects/actuators.effects';
-import { DashboardsEffects } from './store/effects/dashboards.effects';
 import { ReadingsEffects } from './store/effects/readings.effects';
 import { SensorsEffects } from './store/effects/sensors.effects';
 import { actuatorsReducer } from './store/reducers/actuators.reducer';
-import { dashboardsReducer } from './store/reducers/dashboards.reducer';
 import { readingsReducer } from './store/reducers/readings.reducer';
 import { sensorsReducer } from './store/reducers/sensors.reducer';
 
 @NgModule({
   declarations: [
     App,
-    DashboardComponent,
     HomeDashboardComponent,
     HospitalDashboardComponent,
     GarageDashboardComponent,
-    RoadDashboardComponent,
     SummaryCardComponent,
     ReadingChartComponent,
+    RfidTableComponent,
     StatusLabelPipe,
   ],
   imports: [
@@ -62,9 +58,8 @@ import { sensorsReducer } from './store/reducers/sensors.reducer';
       sensors: sensorsReducer,
       readings: readingsReducer,
       actuators: actuatorsReducer,
-      dashboards: dashboardsReducer,
     }),
-    EffectsModule.forRoot([SensorsEffects, ReadingsEffects, ActuatorsEffects, DashboardsEffects]),
+    EffectsModule.forRoot([SensorsEffects, ReadingsEffects, ActuatorsEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
   ],
   providers: [

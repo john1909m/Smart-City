@@ -6,5 +6,5 @@ export const API_ENDPOINTS = {
   actuatorStates: '/actuator-states',
   locations: '/locations',
   readings: '/readings',
-  dashboards: '/dashboards',
+  rfid: '/rfid',
 };

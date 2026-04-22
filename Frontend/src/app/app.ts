@@ -9,10 +9,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class App {
   readonly navigation = [
-    { label: 'Overview', route: '/dashboard' },
     { label: 'Home', route: '/home' },
     { label: 'Hospital', route: '/hospital' },
     { label: 'Garage', route: '/garage' },
-    { label: 'Road', route: '/road' },
   ];
 }

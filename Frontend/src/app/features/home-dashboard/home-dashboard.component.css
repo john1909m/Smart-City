@@ -3,6 +3,40 @@
   gap: 1.1rem;
 }
 
+.summary-cards {
+  display: grid;
+  gap: 1rem;
+}
+
+.summary-cards h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #1e293b;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.environmental-sensors {
+  display: grid;
+  gap: 1rem;
+}
+
+.environmental-sensors h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #1e293b;
+}
+
+.sensor-charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
 .control-row {
   display: grid;
   gap: 0.75rem;
