@@ -13,7 +13,7 @@ public class ActuatorController {
     @Autowired
     private ActuatorService service;
 
-    @PostMapping("/{id}")
+    @PostMapping("/update")
     public ResponseEntity<?> setState(@PathVariable Long id,
                                       @RequestBody ActuatorRequest request) {
         return ResponseEntity.ok(service.setState(id, request));
