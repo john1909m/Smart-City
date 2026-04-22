@@ -9,7 +9,10 @@
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef>Status</th>
       <td mat-cell *matCellDef="let entry">
-        <span class="status-pill" [ngClass]="entry.status.toLowerCase() === 'allowed' ? 'status-success' : 'status-danger'">
+        <span
+          class="status-pill"
+          [ngClass]="isAccessGranted(entry.status) ? 'status-success' : 'status-danger'"
+        >
           {{ entry.status }}
         </span>
       </td>
@@ -17,7 +20,7 @@
 
     <ng-container matColumnDef="type">
       <th mat-header-cell *matHeaderCellDef>Type</th>
-      <td mat-cell *matCellDef="let entry">{{ entry.type }}</td>
+      <td mat-cell *matCellDef="let entry">{{ entry.type || '—' }}</td>
     </ng-container>
 
     <ng-container matColumnDef="timestamp">

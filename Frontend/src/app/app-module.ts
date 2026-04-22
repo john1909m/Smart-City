@@ -2,7 +2,7 @@ import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withInterceptors, withFetch } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -10,7 +10,6 @@ import { BaseChartDirective } from 'ng2-charts';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
@@ -50,7 +49,6 @@ import { sensorsReducer } from './store/reducers/sensors.reducer';
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,
-    MatSlideToggleModule,
     MatListModule,
     MatTableModule,
     BaseChartDirective,
@@ -65,7 +63,7 @@ import { sensorsReducer } from './store/reducers/sensors.reducer';
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideClientHydration(withEventReplay()),
-    provideHttpClient(withInterceptors([apiPrefixInterceptor])),
+    provideHttpClient(withInterceptors([apiPrefixInterceptor]), withFetch()),
   ],
   bootstrap: [App],
 })

@@ -25,7 +25,7 @@ export class ReadingsEffects {
     this.actions$.pipe(
       ofType(ReadingsActions.loadReadingsBySensor),
       switchMap(({ sensorId }) =>
-        this.api.getReadings(sensorId).pipe(
+        this.api.getReadingsBySensorId(sensorId).pipe(
           map((readings) => ReadingsActions.loadReadingsBySensorSuccess({ sensorId, readings })),
           catchError((error) => of(ReadingsActions.loadReadingsBySensorFailure({ error: this.stringifyError(error) }))),
         ),
@@ -37,3 +37,4 @@ export class ReadingsEffects {
     return error instanceof Error ? error.message : 'Unexpected error while loading readings';
   }
 }
+

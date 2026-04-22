@@ -2,9 +2,8 @@
   <header class="page-header">
     <div>
       <h1 class="page-title">Home Dashboard</h1>
-      <p class="page-subtitle">Humidity, rain, CO2, and smart LED controls at home.</p>
+      <p class="page-subtitle">Humidity, rain, and CO2 sensor readings.</p>
     </div>
-    <span class="status-pill status-success">Safe Zone</span>
   </header>
 
   <section class="summary-cards">
@@ -52,32 +51,5 @@
     </div>
   </section>
 
-  <app-rfid-table
-    *ngIf="rfidLogs$ | async as rfidLogs"
-    [rfidLogs]="rfidLogs"
-  ></app-rfid-table>
-
-  <mat-card class="glass-card control-card">
-    <mat-card-title>LED Control Panel</mat-card-title>
-    <div class="control-row" *ngIf="actuatorStates$ | async as states">
-      <ng-container *ngFor="let actuatorState of states | keyvalue">
-        <div class="control-item">
-          <div class="control-meta">
-            <span class="control-name">{{ actuatorState.key }}</span>
-            <span
-              class="status-pill"
-              [ngClass]="actuatorState.value.status === 'on' ? 'status-success' : 'status-warning'"
-            >
-              {{ actuatorState.value.status | statusLabel }}
-            </span>
-          </div>
-          <mat-slide-toggle
-            [checked]="actuatorState.value.status === 'on'"
-            (change)="onLedChange(actuatorState.key, $event.checked)"
-          >
-          </mat-slide-toggle>
-        </div>
-      </ng-container>
-    </div>
-  </mat-card>
+  <app-rfid-table [rfidLogs]="(rfidLogs$ | async) ?? []"></app-rfid-table>
 </section>

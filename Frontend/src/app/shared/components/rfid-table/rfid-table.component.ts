@@ -12,4 +12,9 @@ export class RfidTableComponent {
   @Input() rfidLogs: RfidEntry[] = [];
 
   readonly displayedColumns = ['cardId', 'status', 'type', 'timestamp'];
+
+  isAccessGranted(status: string): boolean {
+    const s = status.toLowerCase();
+    return s === 'allowed' || s === 'authorized' || s === 'granted' || s === 'success' || s === 'ok';
+  }
 }

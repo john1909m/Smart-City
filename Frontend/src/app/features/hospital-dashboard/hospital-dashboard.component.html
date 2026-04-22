@@ -16,7 +16,7 @@
         <span class="status-pill" [ngClass]="item.value > 110 ? 'status-danger' : 'status-success'">
           {{ item.value > 110 ? 'Critical' : 'Normal' }}
         </span>
-        Sensor {{ item.sensorId }}: {{ item.value }} at {{ item.timestamp | date: 'shortTime' }}
+        Sensor {{ item.sensorType }}: {{ item.value }} at {{ item.timestamp | date: 'shortTime' }}
       </mat-list-item>
     </mat-list>
   </mat-card>

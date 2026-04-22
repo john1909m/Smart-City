@@ -11,8 +11,12 @@ export interface SensorCategorySeries {
   readings: SensorReading[];
 }
 
+/** Matches backend `RfidLogsResponse` (GET /api/rfid/{sensorId}). */
 export interface RfidEntry {
+  id: number;
   cardId: string;
   status: string;
-  type: string;
+  timestamp: string;
+  /** Optional: not returned by the API; filled client-side for display. */
+  type?: string;
 }

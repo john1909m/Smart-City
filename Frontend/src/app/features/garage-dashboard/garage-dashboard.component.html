@@ -19,8 +19,8 @@
         <td mat-cell *matCellDef="let row">{{ row.timestamp | date: 'short' }}</td>
       </ng-container>
       <ng-container matColumnDef="sensorId">
-        <th mat-header-cell *matHeaderCellDef>RFID Sensor</th>
-        <td mat-cell *matCellDef="let row">{{ row.sensorId }}</td>
+        <th mat-header-cell *matHeaderCellDef>Sensor type</th>
+        <td mat-cell *matCellDef="let row">{{ row.sensorType }}</td>
       </ng-container>
       <ng-container matColumnDef="value">
         <th mat-header-cell *matHeaderCellDef>Access Result</th>
