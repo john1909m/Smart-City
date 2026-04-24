@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Vision City | Smart Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Animated Background -->
+        <div class="orb-glow"></div>
+        <div class="orb-glow orb-2"></div>
+        
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-content">
+                <div class="title-section">
+                    <h1 class="gradient-text">Smart City</h1>
+                    <p class="subtitle">Intelligent Environment Dashboard</p>
+                </div>
+                <div class="status-indicator">
+                    <div class="live-dot"></div>
+                    <span>Live Monitoring</span>
+                </div>
+            </div>
+            <div class="refresh-badge"> Auto-refresh · 5s</div>
+        </header>
+
+        <!-- Stats Bar -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <span class="stat-label">System Status</span>
+                <span class="stat-value online">Operational</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Last Update</span>
+                <span class="stat-value" id="lastUpdate">Just now</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Data Points</span>
+                <span class="stat-value" id="dataPoints">--</span>
+            </div>
+        </div>
+
+        <!-- Dashboard Grid -->
+        <div class="cards-grid" id="dashboardGrid">
+            <!-- CO2 Sensor Card -->
+            <div class="glass-card" id="card-co2">
+                <div class="card-header">
+                    <div class="card-title">
+                        <span class="card-icon">🌫️</span>
+                        <h2>CO₂ Sensor</h2>
+                    </div>
+                    <div class="sensor-badge">ppm</div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="co2Chart"></canvas>
+                </div>
+                <div class="info-hint">
+                    <span>Last 50 readings</span>
+                    <span id="co2Count">-- records</span>
+                </div>
+                <div class="table-wrapper">
+                    <table class="data-table" id="co2Table">
+                        <thead>
+                            <tr><th>ID</th><th>Value (ppm)</th><th>Timestamp</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td colspan="3" class="loading-placeholder">—<br>Loading data —</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Humidity Sensor Card -->
+            <div class="glass-card" id="card-humidity">
+                <div class="card-header">
+                    <div class="card-title">
+                        <span class="card-icon">💧</span>
+                        <h2>Humidity</h2>
+                    </div>
+                    <div class="sensor-badge">% RH</div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="humidityChart"></canvas>
+                </div>
+                <div class="info-hint">
+                    <span>Last 50 readings</span>
+                    <span id="humidityCount">-- records</span>
+                </div>
+                <div class="table-wrapper">
+                    <table class="data-table" id="humidityTable">
+                        <thead><tr><th>ID</th><th>Value (%)</th><th>Timestamp</th></tr></thead>
+                        <tbody><tr><td colspan="3" class="loading-placeholder">—<br>Loading data —</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Rain Sensor Card -->
+            <div class="glass-card" id="card-rain">
+                <div class="card-header">
+                    <div class="card-title">
+                        <span class="card-icon">☔</span>
+                        <h2>Rain Sensor</h2>
+                    </div>
+                    <div class="sensor-badge">mm</div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="rainChart"></canvas>
+                </div>
+                <div class="info-hint">
+                    <span>Last 50 readings</span>
+                    <span id="rainCount">-- records</span>
+                </div>
+                <div class="table-wrapper">
+                    <table class="data-table" id="rainTable">
+                        <thead><tr><th>ID</th><th>Value (mm)</th><th>Timestamp</th></tr></thead>
+                        <tbody><tr><td colspan="3" class="loading-placeholder">—<br>Loading data —</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- RFID Logs Card -->
+            <div class="glass-card" id="card-rfid">
+                <div class="card-header">
+                    <div class="card-title">
+                        <span class="card-icon">🪪</span>
+                        <h2>RFID Access</h2>
+                    </div>
+                    <div class="sensor-badge">logs</div>
+                </div>
+                <div class="rfid-stats">
+                    <div class="stat-chip">
+                        <span>Latest events</span>
+                    </div>
+                </div>
+                <div class="table-wrapper">
+                    <table class="data-table" id="rfidTable">
+                        <thead><tr><th>ID</th><th>Card ID</th><th>Status</th><th>Timestamp</th></tr></thead>
+                        <tbody><tr><td colspan="4" class="loading-placeholder">—<br>Loading logs —</td></tr></tbody>
+                    </table>
+                </div>
+                <div class="info-hint">
+                    <span id="rfidCount">-- events</span>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Vision City Dashboard · Secure Environmental Monitoring</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
